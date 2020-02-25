@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+ <head>
+<title>Fiits' Law</title>
+<style type="text/css">
+body {
+ background-color: #FFF0;
+ margin: 30px;
+ margin-top: 10px;
+}
+ 
+ 
+#target {
+ height: 10mm;
+ width: 10mm;
+ background-color: #6495ED;
+ position: relative;
+ left: 500px;
+ top: 150px;
+ cursor: pointer;
+ border-radius: 100%;
+ border:8px solid black;    
+ border-radius: 100%;
+}
+
+</style>
+</head>
+<body>
+   <div id="target2">
+ 
+<div id="target">
+<script>
+ 
+ 
+var count = 0;
+var seconds = 0;
+var lastYPost = 0;
+var lastXPost = 0;
+var newYPost = 0;
+var lastClick = Date.now();
+ 
+target.onclick = function()
+{
+  currentClick = Date.now();
+  clickTime = currentClick - lastClick;
+  
+  console.log("Time: " + clickTime/ 1000);
+  count += 1;
+ 
+lastYPost = target.style.top;
+lastXPost = target.style.left;
+//console.log(lastYPost)
+ 
+ document.body.appendChild(target);
+//  var xy = getRandomPosition(target);
+var randomY1 = Math.floor(Math.random()*window.innerHeight);
+var randomX2 = Math.floor(Math.random()*window.innerWidth);
+target.style.top = randomY1 + 'px';
+target.style.left = randomX2 + 'px';
+ //target2.style.top =target.style.top - 1 ;
+  //console.log(target);
+ //console.log(target.style.top);
+ //console.log(parseInt(target.style.top));
+diffDistY = parseInt(lastYPost) - parseInt(target.style.top); //math.abs
+diffDistX = parseInt(lastXPost) - parseInt(target.style.left); //math.abs
+
+console.log("Y Distance: " + Math.abs(diffDistY));
+console.log("X Distance: " + Math.abs(diffDistX));
+
+console.log("Position: " + target.style.top + " Y &", target.style.left + " X");
+
+ if (count == 5){
+ console.log(seconds +" seconds");
+}
+
+if (onclick == target.style.border){
+  console.log("hit border");}
+}
+</script>
+ 
+</div>
+</div>
+</body>
+</html>
+
