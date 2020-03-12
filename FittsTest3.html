@@ -24,6 +24,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  border-radius: 100%;
 }
 
   </style>
@@ -60,9 +61,11 @@ window.addEventListener("DOMContentLoaded", function(){
   getNumber()
   Array.from(grid, function(box) {
     box.addEventListener("mouseup", function() {
+      /*
     console.log("X: " + (document.getElementById("Position").innerHTML = event.clientX ));
     console.log("Y: " + (document.getElementById("Position").innerHTML = event.clientY));
     console.log( "MISS")
+    */
     count += 1;
     getPerformance()  
     }); 
@@ -82,11 +85,11 @@ function getNumber()
   var x = document.getElementById(num);
   counter++;
   x.style.background = "red";
-  
-  //console.log("counter " + counter)
-  //console.log(x.id)
-  Store = [x.id];
-  //console.log("Store1 = " +Store)
+
+  previousID = x.id;
+  nextID = Math.floor(Math.random() * Math.floor(14));
+
+
   lastClick = Date.now();  
 
 
@@ -95,22 +98,15 @@ x.onclick = function()
   count + 1;
   console.log("X: " + (document.getElementById("Position").innerHTML = event.clientX ));
   console.log("Y: " + (document.getElementById("Position").innerHTML = event.clientY));
-  console.log("Cell Clicked: " + x.id + 1)
+  console.log("Cell Clicked: " + previousID)
+  console.log("next cell : " + nextID)
   count + 1;
   console.log(count);
   currentClick = Date.now();  
   clickTime = currentClick - lastClick;
   console.log("Time: " + clickTime);
  
-  //currentClick
-  //x = []
   x.style.background = "#6495ED";
-  //x=[]
-  //console.log("Store = " +Store)
-  Store = [];
-  //console.log("Store empty = " +Store)
-  //window.document.dispatchEvent(DOMContentLoaded_event)
-
   x.onclick = function()
  {
    console.log("MISS")
@@ -123,14 +119,18 @@ x.onclick = function()
   counter--
  }
 
- if (count == 5 || count > 5) 
+ if (count == 20 || count > 20) 
  {
    
-  window.location.href = 'EndScreen.html';
-  // alert("Task Complete. Time: " + clickTiming)
+ // window.location.href = 'EndScreen.html';
+   alert("Task Complete. Time: " + clickTiming)
  }
 }
 
+function order()
+{
+
+}
 </script>
 <style>
 
