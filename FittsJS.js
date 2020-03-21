@@ -5,6 +5,8 @@ var i = 0;
 var startID = i;
 let counter =0;
 var startID;
+var orderArray = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14];
+var emptyArray = [];
 
 
 setTarget(startID)
@@ -38,6 +40,12 @@ boxes.forEach(box => {
         console.log("hit")
         let randomPos = randomNumb();
         setTarget(randomPos);
+        if(randomPos === undefined)
+        {
+          i = 2
+        }
+   //     i = i + 1;
+       startID = i;
     //    randomNumb()
       } else {
      
@@ -51,6 +59,32 @@ boxes.forEach(box => {
 
 
 })
+function randomNumb(){
+  randomer = orderArray[Math.floor(Math.random() * (orderArray.length))];
+//console.log(orderArray)
+console.log("Random: " + randomer)
+
+console.log(orderArray.splice(orderArray.indexOf(randomer), 1 ));
+//console.log(randomer)
+console.log("Starting Number: " + i)
+  if (randomer === undefined || randomer === emptyArray)
+  {
+    orderArray = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14]; 
+  //  setTarget(startNumb);
+    console.log("awjmfka")
+    i++
+    console.log("I value: " + i)
+    console.log("randomer: " + randomer)
+    console.log("array: " + orderArray)
+    randomer = i
+    if(i == 15 || i > 14)
+    {
+      alert("OVER")
+    }
+    
+  }
+  return randomer;  
+}
 
 function setTarget(boxNumb) {
 	let newTarget = boxes[boxNumb];
@@ -61,12 +95,6 @@ function setTarget(boxNumb) {
 
 	target = boxNumb;
 }
-function randomNumb(){
-  randomer = [Math.floor(Math.random() * (14))];
-  return randomer
-}
-
-
 
 function resetGrid() {
 	boxes.forEach(box => {
