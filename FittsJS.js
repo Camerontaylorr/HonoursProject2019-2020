@@ -1,4 +1,4 @@
-const box = document.querySelectorAll('.box')
+const boxes = document.querySelectorAll('.box')
 let target = startID;
 
 var i = 0;
@@ -9,6 +9,7 @@ var startID;
 
 setTarget(startID)
 
+/*
 function startbox(){
 	box.forEach(className => {
 		className.classList.remove('Target')
@@ -18,27 +19,27 @@ function startbox(){
 	startID.classList.add('Target');
 	hitPosition = startID.id;
 	}
+*/
 
-box.forEach(id => {
-	id.addEventListener('mouseup',() =>{
+boxes.forEach(box => {
+	box.addEventListener('mouseup',() =>{
 			
-			if(box.id === target){
+			if(box.id == target){
       console.log("hit")
       resetGrid()
       }
 
       if (target == startID){
+      //  resetGrid()
         console.log("hit")
         let randomPos = randomNumb();
         setTarget(randomPos);
     //    randomNumb()
       }
-
-
-  else 
-		   {
-			console.log("MISS")
-		   }
+     else {
+       console.log("a")
+      setTarget(startID);
+    }
 		   
 	})
 
@@ -47,7 +48,7 @@ box.forEach(id => {
 })
 
 function setTarget(boxNumb) {
-	let newTarget = box[boxNumb];
+	let newTarget = boxes[boxNumb];
   //newTarget.classList.add('Target');
   
   newTarget.classList.add('Target');
@@ -63,10 +64,10 @@ function randomNumb(){
 
 
 function resetGrid() {
-	box.forEach(box => {
+	boxes.forEach(box => {
 	  box.classList.remove('Target');
 	});
-  startbox();
+ // startbox();
  
 
   }
