@@ -1,10 +1,13 @@
 const box = document.querySelectorAll('.box')
-const target = document.querySelectorAll('.Target')
+let target = startID;
 
+var i = 0;
+var startID = i;
 let counter =0;
 var startID;
-var i = 0
 
+
+setTarget(startID)
 
 function startbox(){
 	box.forEach(className => {
@@ -19,25 +22,20 @@ function startbox(){
 box.forEach(id => {
 	id.addEventListener('mouseup',() =>{
 			
-			if(id.id === hitPosition){
-			startID.classList.remove('Target')
-			let randomPos = box[Math.floor(Math.random()*14)]
-			randomPos.classList.add('Target')
+			if(box.id === target){
+      console.log("hit")
+      resetGrid()
+      }
 
-			startID = randomPos
-
-			hitPosition = randomPos.id					
-			console.log("Rand: " + randomPos.id)
-
-			randomPos = box[i]
-			randomPos.classList.add('Target')
-			console.log("Rand 2: " + randomPos.id)
+      if (target == startID){
+        console.log("hit")
+        let randomPos = randomNumb();
+        setTarget(randomPos);
+    //    randomNumb()
+      }
 
 
-
-}
-
-else 
+  else 
 		   {
 			console.log("MISS")
 		   }
@@ -48,5 +46,28 @@ else
 
 })
 
-	
-	startbox();
+function setTarget(boxNumb) {
+	let newTarget = box[boxNumb];
+  //newTarget.classList.add('Target');
+  
+  newTarget.classList.add('Target');
+ 
+
+	target = boxNumb;
+}
+function randomNumb(){
+  randomer = [Math.floor(Math.random() * (14))];
+  return randomer
+}
+
+
+
+function resetGrid() {
+	box.forEach(box => {
+	  box.classList.remove('Target');
+	});
+  startbox();
+ 
+
+  }
+
