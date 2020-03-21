@@ -26,8 +26,12 @@ boxes.forEach(box => {
 			
 			if(box.id == target){
       console.log("hit")
+      console.log(startID)
+      console.log("hit")
+      console.log("X: " + (document.getElementById("Position").innerHTML = event.clientX ));
+      console.log("Y: " + (document.getElementById("Position").innerHTML = event.clientY));
       resetGrid()
-      }
+      
 
       if (target == startID){
       //  resetGrid()
@@ -35,12 +39,13 @@ boxes.forEach(box => {
         let randomPos = randomNumb();
         setTarget(randomPos);
     //    randomNumb()
-      }
-     else {
-       console.log("a")
-      setTarget(startID);
+      } else {
+     
+				setTarget(startID);
+			}
+		} else{
+      console.log("miss")
     }
-		   
 	})
 
 
