@@ -19,6 +19,13 @@
   justify-content: center;
   align-items: center;
   border-radius: 100%;
- -webkit-tap-highlight-color: transparent;
+-webkit-tap-highlight-color: transparent;
 
 }
+
+.Target
+{
+	background-color: red;
+	background-size: cover;
+	border-radius: 100%;
+}	
