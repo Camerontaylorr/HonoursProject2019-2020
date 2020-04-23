@@ -21,8 +21,9 @@
 */
   ?>
 <!DOCTYPE html>
-<html>
+<html lang = "en">
 <head>
+<Title> Fitts Law StartScreen </Title>
 <link rel = "stylesheet" href ="FittsCSS.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script>
@@ -56,14 +57,13 @@
 							<option value="Right">Right</option>
 							<option value="Both Hands">Both Hands</option>
                             </select>
-                        </div>
 						<input type = "hidden" name ="screenWidth" id ="screenWidth" readonly/>
 						<input type = "hidden" name ="screenHeight" id ="screenHeight" readonly/>
-               
+    </div>
         
 
                         <div class="col-md-12 col-sm-12 p-0">
-                            <button type="submit" id= "submit" name="submit" value="submit" class="btn btn-danger wrn-btn">Submit</button>
+                            <button type="submit" id= "submit" name="submit" value="submit" class="btn btn-danger wrn-btn" onclick ="send()">Submit</button>
                         </div>
 					
                     </div>
@@ -74,7 +74,7 @@
 			<br>
 	<div class="container" style="background-color:white">
   <h2>Step 1</h2>
-  <p>Enter what device you are currently using (e.g. Samsung Galaxy s10) in to the bar above and click submit.</p>
+  <p>Enter what device you are currently using (e.g. Samsung Galaxy s10) and on what hand(s) into the bar above and click submit.</p>
 	</div>
 	<br>
 	<div class="container" style="background-color:white">
@@ -111,6 +111,19 @@ var screenHeight = screen.height;
 document.getElementById('screenWidth').value = screenWidth;
 document.getElementById('screenHeight').value = screenHeight;
 
+function send(){
+  $.ajax({
+    type: 'POST',
+    url: 'https://zeno.computing.dundee.ac.uk/2019-projects/camerontaylor/userPerformance.php',
+    data: {
+    'screenWidth': screenWidth, 
+    'screenHeight': screenHeight, 
+  },
+    success: function(data){
+      console.log(data);
+  }
+  });
+}
 </script>
 </form>
 </body>
